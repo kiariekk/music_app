@@ -3,7 +3,15 @@ abstract class FontConstant {
 }
 
 abstract class ImageRasterConstant {
-  //  static const _path = 'assets/images/raster';
+  static const _path = 'assets/images/raster';
+  static const album1 = _path + '/album_1.png';
+  static const album2 = _path + '/album_2.png';
+  static const album3 = _path + '/album_3.png';
+  static const topMusic1 = _path + '/top_music_1.png';
+  static const topMusic2 = _path + '/top_music_2.png';
+  static const topMusic3 = _path + '/top_music_3.png';
+  static const topMusic4 = _path + '/top_music_4.png';
+  static const topMusic5 = _path + '/top_music_5.png';
 }
 
 abstract class ImageVectorConstant {
@@ -23,5 +31,6 @@ abstract class IconConstant {
   static const radio = _path + '/radio.svg';
   static const repeat = _path + '/repeat.svg';
   static const search = _path + '/search.svg';
+  static const settings = _path + '/settings.svg';
   static const user = _path + '/user.svg';
 }
