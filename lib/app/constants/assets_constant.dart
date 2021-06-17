@@ -1,3 +1,5 @@
+part of constant;
+
 abstract class FontConstant {
   static const poppins = "Poppins";
 }
