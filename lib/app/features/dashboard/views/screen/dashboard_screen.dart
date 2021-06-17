@@ -10,8 +10,11 @@ import 'package:music_app/app/shared_components/sidebar_button.dart';
 
 // bindings
 part '../../bindings/dashboard_binding.dart';
+
 // controllers
 part '../../controllers/dashboard_controller.dart';
+// models
+part '../../models/dashboard_profile.dart';
 
 // components
 part '../components/sidebar/sidebar.dart';
@@ -22,7 +25,10 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _Sidebar(),
+      body: Container(
+          padding: EdgeInsets.symmetric(vertical: 50),
+          width: 300,
+          child: _Sidebar()),
     );
   }
 }

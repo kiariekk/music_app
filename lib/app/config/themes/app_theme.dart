@@ -8,10 +8,12 @@ class AppTheme {
 
   static ThemeData get basic {
     return ThemeData(
+      canvasColor: Color.fromRGBO(249, 250, 254, 1),
       primarySwatch: Colors.indigo,
       primaryColor: _primaryColor,
       primaryColorLight: _primaryColorLight,
       fontFamily: FontConstant.poppins,
+      dividerColor: _primaryColorLight,
     );
   }
 }

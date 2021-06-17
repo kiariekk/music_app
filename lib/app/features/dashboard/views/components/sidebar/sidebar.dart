@@ -1,38 +1,79 @@
 part of dashboard;
 
 class _Sidebar extends GetView<DashboardController> {
-  _Sidebar({Key? key}) : super(key: key);
-
-  final _sidebar = SidebarPage.home.obs;
+  _Sidebar({
+    Key? key,
+    this.borderRadius = BorderRadius.zero,
+  }) : super(key: key);
+  final BorderRadius borderRadius;
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () => Column(children: [
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: borderRadius,
+        color: Colors.white,
+      ),
+      child: Column(children: [
+        SizedBox(height: 20),
         _profile(),
-        _groupingButton(textHeader: "Browse", items: [
-          SidebarPage.home,
-          SidebarPage.playlist,
-          SidebarPage.artist,
-          SidebarPage.albums
-        ]),
-        _groupingButton(textHeader: "Discover", items: [
-          SidebarPage.radio,
-          SidebarPage.event,
-          SidebarPage.podcast,
-          SidebarPage.forYou
-        ]),
+        SizedBox(height: 10),
+        Divider(
+          thickness: .5,
+          indent: 10,
+          endIndent: 10,
+        ),
+        Obx(
+          () => _groupingButton(textHeader: "Browse", items: [
+            SidebarPage.home,
+            SidebarPage.playlist,
+            SidebarPage.artist,
+            SidebarPage.albums
+          ]),
+        ),
+        Obx(
+          () => _groupingButton(textHeader: "Discover", items: [
+            SidebarPage.radio,
+            SidebarPage.event,
+            SidebarPage.podcast,
+            SidebarPage.forYou
+          ]),
+        ),
+        SizedBox(height: 20),
       ]),
     );
   }
 
   Widget _profile() {
-    return Column(
-      children: [
-        ShadowImage(
-            imageProvider: AssetImage(
-          ImageRasterConstant.topMusic1,
-        ))
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      child: Column(
+        children: [
+          ShadowImage(
+            size: Size(70, 70),
+            imageProvider: controller.profil.image,
+            borderRadius: BorderRadius.circular(35),
+            offset: Offset(-2, 5),
+          ),
+          SizedBox(height: 15),
+          Text(
+            controller.profil.name,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+              letterSpacing: 1,
+            ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+          SizedBox(height: 2),
+          Text(
+            controller.profil.email,
+            style: TextStyle(color: Theme.of(Get.context!).primaryColor),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ],
+      ),
     );
   }
 
@@ -42,9 +83,9 @@ class _Sidebar extends GetView<DashboardController> {
         .map(
           (e) => SideBarButton(
             value: e,
-            groupValue: _sidebar.value,
+            groupValue: controller.pageSelected.value,
             onChanged: (value) {
-              _sidebar.value = value;
+              controller.pageSelected.value = value;
             },
           ),
         )
@@ -60,7 +101,7 @@ class _Sidebar extends GetView<DashboardController> {
             textHeader,
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 16,
+              fontSize: 18,
               letterSpacing: 1,
             ),
           ),
