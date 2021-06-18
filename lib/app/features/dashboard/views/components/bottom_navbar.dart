@@ -10,6 +10,10 @@ class _BottomNavbar extends GetView<DashboardPlayMusicController> {
     return SizedBox(
       height: 120,
       child: Material(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(50),
+          topRight: Radius.circular(50),
+        ),
         color: Colors.white,
         child: Row(
           children: [
