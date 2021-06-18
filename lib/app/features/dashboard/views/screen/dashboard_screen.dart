@@ -21,6 +21,7 @@ part '../../models/dashboard_profile.dart';
 
 // components
 part '../components/bottom_navbar.dart';
+part '../components/header.dart';
 part '../components/sidebar.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -29,10 +30,31 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-          padding: EdgeInsets.symmetric(vertical: 50),
-          width: 300,
-          child: _Sidebar()),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Row(
+            children: [
+              Flexible(
+                flex: 2,
+                child: Container(
+                  child: _Sidebar(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+              ),
+              Flexible(
+                flex: 8,
+                child: Column(
+                  children: [
+                    _Header(),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
       bottomNavigationBar: _BottomNavbar(),
     );
   }

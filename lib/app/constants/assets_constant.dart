@@ -24,6 +24,7 @@ abstract class ImageVectorConstant {
 
 abstract class IconConstant {
   static const _path = 'assets/icons';
+  static const notification = _path + '/notification.svg';
   static const album = _path + '/album.svg';
   static const event = _path + '/event.svg';
   static const hearth = _path + '/hearth.svg';
