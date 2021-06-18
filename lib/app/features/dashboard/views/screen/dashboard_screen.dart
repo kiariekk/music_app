@@ -23,6 +23,7 @@ part '../../models/dashboard_profile.dart';
 // components
 part '../components/bottom_navbar.dart';
 part '../components/header.dart';
+part '../components/popular_music.dart';
 part '../components/sidebar.dart';
 part '../components/top_music.dart';
 
@@ -38,7 +39,7 @@ class DashboardScreen extends StatelessWidget {
           child: Row(
             children: [
               Flexible(
-                flex: 2,
+                flex: 3,
                 child: Container(
                   child: _Sidebar(
                     borderRadius: BorderRadius.circular(20),
@@ -46,7 +47,7 @@ class DashboardScreen extends StatelessWidget {
                 ),
               ),
               Flexible(
-                flex: 8,
+                flex: 15,
                 child: Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: kPaddingContent),
@@ -54,8 +55,20 @@ class DashboardScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       _Header(),
-                      SizedBox(height: kPaddingContent * 2),
-                      _TopMusic(),
+                      SizedBox(height: kPaddingContent),
+                      Expanded(
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.vertical,
+                          child: Column(
+                            children: [
+                              SizedBox(height: kPaddingContent),
+                              _TopMusic(),
+                              SizedBox(height: kPaddingContent * 2),
+                              _PopularMusic(),
+                            ],
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
