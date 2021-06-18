@@ -6,6 +6,8 @@ abstract class FontConstant {
 
 abstract class ImageRasterConstant {
   static const _path = 'assets/images/raster';
+
+  static const logo = _path + '/logo.png';
   static const album1 = _path + '/album_1.png';
   static const album2 = _path + '/album_2.png';
   static const album3 = _path + '/album_3.png';
