@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:music_app/app/constants/app_constant.dart';
+import 'package:music_app/app/shared_components/card_music.dart';
 import 'package:music_app/app/shared_components/shadow_image.dart';
 import 'package:music_app/app/shared_components/sidebar_button.dart';
 
@@ -62,6 +63,14 @@ class DashboardScreen extends StatelessWidget {
                           child: Column(
                             children: [
                               SizedBox(height: kPaddingContent),
+                              CardMusic(
+                                onPressedPlayOrPause: () {},
+                                onPressedLikedSong: () {},
+                              ),
+                              CardMusic(
+                                onPressedPlayOrPause: () {},
+                                onPressedLikedSong: () {},
+                              ),
                               _TopMusic(),
                               SizedBox(height: kPaddingContent * 2),
                               _PopularMusic(),
