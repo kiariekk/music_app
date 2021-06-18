@@ -17,12 +17,14 @@ part '../../controllers/dashboard_controller.dart';
 part '../../controllers/dashboard_play_music_controller.dart';
 
 // models
+part '../../models/dashboard_music.dart';
 part '../../models/dashboard_profile.dart';
 
 // components
 part '../components/bottom_navbar.dart';
 part '../components/header.dart';
 part '../components/sidebar.dart';
+part '../components/top_music.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({Key? key}) : super(key: key);
@@ -32,7 +34,7 @@ class DashboardScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(kPaddingContent),
           child: Row(
             children: [
               Flexible(
@@ -45,10 +47,17 @@ class DashboardScreen extends StatelessWidget {
               ),
               Flexible(
                 flex: 8,
-                child: Column(
-                  children: [
-                    _Header(),
-                  ],
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: kPaddingContent),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _Header(),
+                      SizedBox(height: kPaddingContent * 2),
+                      _TopMusic(),
+                    ],
+                  ),
                 ),
               )
             ],

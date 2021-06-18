@@ -8,7 +8,6 @@ class _Header extends StatelessWidget {
     return Container(
       child: Row(
         children: [
-          SizedBox(width: 20),
           SizedBox(
             width: 400,
             child: _search(),
