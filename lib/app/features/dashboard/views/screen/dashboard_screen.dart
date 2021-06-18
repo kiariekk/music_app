@@ -1,5 +1,7 @@
 library dashboard;
 
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -12,6 +14,8 @@ part '../../bindings/dashboard_binding.dart';
 
 // controllers
 part '../../controllers/dashboard_controller.dart';
+part '../../controllers/dashboard_play_music_controller.dart';
+
 // models
 part '../../models/dashboard_profile.dart';
 

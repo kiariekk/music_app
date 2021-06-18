@@ -1,6 +1,6 @@
 part of dashboard;
 
-class _BottomNavbar extends StatelessWidget {
+class _BottomNavbar extends GetView<DashboardPlayMusicController> {
   _BottomNavbar({Key? key}) : super(key: key);
 
   final _sliderValue = 0.6.obs;
@@ -40,10 +40,12 @@ class _BottomNavbar extends StatelessWidget {
           imageProvider: AssetImage(ImageRasterConstant.topMusic1),
           size: Size(60, 60),
           borderRadius: BorderRadius.circular(30),
+          offset: Offset(0, 5),
         ),
         SizedBox(width: 15),
         Expanded(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
@@ -72,24 +74,29 @@ class _BottomNavbar extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         IconButton(
+          iconSize: 30,
           icon: Icon(
             Icons.fast_rewind_outlined,
-            size: 30,
           ),
           onPressed: () {},
           tooltip: "previous song",
         ),
-        IconButton(
+        Obx(
+          () => IconButton(
             iconSize: 40,
-            icon: Icon(
-              Icons.pause_circle_filled_rounded,
+            icon: AnimatedIcon(
+              icon: AnimatedIcons.play_pause,
+              progress: controller.animationPausePlay,
               color: Theme.of(Get.context!).primaryColor,
             ),
-            onPressed: () {}),
+            tooltip: (controller.isPlaying.value) ? "pause" : "play",
+            onPressed: () => controller.playOrPause(),
+          ),
+        ),
         IconButton(
+          iconSize: 30,
           icon: Icon(
             Icons.fast_forward_outlined,
-            size: 30,
           ),
           onPressed: () {},
           tooltip: "next song",
@@ -101,7 +108,7 @@ class _BottomNavbar extends StatelessWidget {
   Widget _slider() {
     return Row(
       children: [
-        Text("10:20"),
+        Text("3:00"),
         Expanded(
           child: SliderTheme(
             data: SliderTheme.of(Get.context!).copyWith(
@@ -116,7 +123,7 @@ class _BottomNavbar extends StatelessWidget {
             ),
           ),
         ),
-        Text("10:20"),
+        Text("10:00"),
       ],
     );
   }
@@ -125,15 +132,18 @@ class _BottomNavbar extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
+        Spacer(flex: 5),
         IconButton(
             icon: SvgPicture.asset(IconConstant.hearth),
             onPressed: () {},
             tooltip: "Liked song"),
+        Spacer(flex: 1),
         IconButton(
           icon: SvgPicture.asset(IconConstant.music),
           onPressed: () {},
           tooltip: "List music",
         ),
+        Spacer(flex: 1),
         IconButton(
           icon: SvgPicture.asset(IconConstant.repeat),
           onPressed: () {},

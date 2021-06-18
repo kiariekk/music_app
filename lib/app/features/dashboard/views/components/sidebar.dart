@@ -8,11 +8,9 @@ class _Sidebar extends GetView<DashboardController> {
   final BorderRadius borderRadius;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: borderRadius,
-        color: Colors.white,
-      ),
+    return Material(
+      borderRadius: borderRadius,
+      color: Colors.white,
       child: Column(children: [
         SizedBox(height: 20),
         _profile(),
