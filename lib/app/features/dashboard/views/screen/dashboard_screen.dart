@@ -10,6 +10,7 @@ import 'package:music_app/app/constants/app_constant.dart';
 import 'package:music_app/app/shared_components/card_music.dart';
 import 'package:music_app/app/shared_components/shadow_image.dart';
 import 'package:music_app/app/shared_components/sidebar_button.dart';
+import 'package:music_app/app/utils/helper/extension.dart';
 
 // bindings
 part '../../bindings/dashboard_binding.dart';

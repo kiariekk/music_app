@@ -4,7 +4,12 @@ class DashboardPlayMusicController extends GetxController
     with SingleGetTickerProviderMixin {
   late final AnimationController animationPausePlay;
   final isPlaying = false.obs;
-
+  final musicPlay = DashboardMusic(
+    image: AssetImage(ImageRasterConstant.maroon5),
+    title: "Memories",
+    singerName: "Maroon 5",
+    duration: Duration(seconds: 221),
+  );
   final currentDurationPlayInSecond = 0.obs;
 
   @override

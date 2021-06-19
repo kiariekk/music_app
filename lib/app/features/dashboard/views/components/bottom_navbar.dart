@@ -14,8 +14,8 @@ class _BottomNavbar extends GetView<DashboardPlayMusicController> {
           topLeft: Radius.circular(50),
           topRight: Radius.circular(50),
         ),
-        elevation: 5,
-        shadowColor: Colors.black12,
+        elevation: 10,
+        shadowColor: Colors.black26,
         color: Colors.white,
         child: Row(
           children: [
@@ -43,7 +43,7 @@ class _BottomNavbar extends GetView<DashboardPlayMusicController> {
       children: [
         SizedBox(width: 20),
         ShadowImage(
-          imageProvider: AssetImage(ImageRasterConstant.levitating),
+          imageProvider: controller.musicPlay.image,
           size: Size(60, 60),
           borderRadius: BorderRadius.circular(30),
           offset: Offset(0, 5),
@@ -55,14 +55,14 @@ class _BottomNavbar extends GetView<DashboardPlayMusicController> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "label label label label",
+                controller.musicPlay.title,
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
               SizedBox(height: 5),
               Text(
-                "music music music music",
+                controller.musicPlay.singerName,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
@@ -112,25 +112,31 @@ class _BottomNavbar extends GetView<DashboardPlayMusicController> {
   }
 
   Widget _slider() {
-    return Row(
-      children: [
-        Text("3:00"),
-        Expanded(
-          child: SliderTheme(
-            data: SliderTheme.of(Get.context!).copyWith(
-                thumbColor: Colors.transparent,
-                thumbShape: RoundSliderThumbShape(enabledThumbRadius: 0.0)),
-            child: Obx(
-              () => Slider(
-                value: _sliderValue.value,
-                activeColor: Theme.of(Get.context!).primaryColor,
-                onChanged: (value) => _sliderValue.value = value,
+    return Obx(
+      () => Row(
+        children: [
+          Text(Duration(
+                  seconds: (controller.musicPlay.duration.inSeconds *
+                          _sliderValue.value)
+                      .toInt())
+              .formatMS()),
+          Expanded(
+            child: SliderTheme(
+              data: SliderTheme.of(Get.context!).copyWith(
+                  thumbColor: Colors.transparent,
+                  thumbShape: RoundSliderThumbShape(enabledThumbRadius: 0.0)),
+              child: Obx(
+                () => Slider(
+                  value: _sliderValue.value,
+                  activeColor: Theme.of(Get.context!).primaryColor,
+                  onChanged: (value) => _sliderValue.value = value,
+                ),
               ),
             ),
           ),
-        ),
-        Text("10:00"),
-      ],
+          Text(controller.musicPlay.duration.formatMS()),
+        ],
+      ),
     );
   }
 
