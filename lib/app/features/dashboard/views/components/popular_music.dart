@@ -18,14 +18,20 @@ class _PopularMusic extends GetView<DashboardController> {
         SizedBox(
           width: double.infinity,
           child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
+            scrollDirection: Axis.vertical,
+            child: Column(
               children: controller.listTopMusic
                   .map(
-                    (e) => _cardButton(
-                      imageProvider: e.image,
-                      title: e.title,
-                      subtitle: e.singerName,
+                    (e) => CardMusic(
+                      data: CardMusicData(
+                        image: e.image,
+                        title: e.title,
+                        subtitle: e.singerName,
+                        duration: e.duration,
+                        isPlaying: false,
+                      ),
+                      onPressedPlayOrPause: () {},
+                      onPressedLikedSong: () {},
                     ),
                   )
                   .toList(),
@@ -33,50 +39,6 @@ class _PopularMusic extends GetView<DashboardController> {
           ),
         )
       ],
-    );
-  }
-
-  Widget _cardButton(
-      {required ImageProvider imageProvider,
-      required String title,
-      required String subtitle,
-      Size size = const Size(320, 320)}) {
-    return Padding(
-      padding: const EdgeInsets.all(20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ShadowImage(
-            imageProvider: imageProvider,
-            size: size,
-            offset: Offset(-10, 10),
-          ),
-          SizedBox(height: 20),
-          SizedBox(
-            width: size.width,
-            child: Text(
-              title,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-                letterSpacing: 1,
-              ),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
-          SizedBox(height: 5),
-          SizedBox(
-            width: size.width,
-            child: Text(
-              subtitle,
-              style: TextStyle(fontSize: 13, color: Colors.black45),
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
-        ],
-      ),
     );
   }
 }
