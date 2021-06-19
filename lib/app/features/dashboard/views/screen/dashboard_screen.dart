@@ -19,6 +19,7 @@ part '../../controllers/dashboard_controller.dart';
 part '../../controllers/dashboard_play_music_controller.dart';
 
 // models
+part '../../models/dashboard_album.dart';
 part '../../models/dashboard_music.dart';
 part '../../models/dashboard_profile.dart';
 
@@ -26,6 +27,7 @@ part '../../models/dashboard_profile.dart';
 part '../components/bottom_navbar.dart';
 part '../components/header.dart';
 part '../components/popular_music.dart';
+part '../components/recommended_album.dart';
 part '../components/sidebar.dart';
 part '../components/top_music.dart';
 
@@ -60,13 +62,21 @@ class DashboardScreen extends StatelessWidget {
                       SizedBox(height: kPaddingContent),
                       Expanded(
                         child: SingleChildScrollView(
+                          physics: BouncingScrollPhysics(),
                           scrollDirection: Axis.vertical,
                           child: Column(
                             children: [
                               SizedBox(height: kPaddingContent),
                               _TopMusic(),
                               SizedBox(height: kPaddingContent * 2),
-                              _PopularMusic(),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Flexible(flex: 1, child: _PopularMusic()),
+                                  SizedBox(width: kPaddingContent),
+                                  Flexible(flex: 1, child: _RecommendedAlbum()),
+                                ],
+                              ),
                             ],
                           ),
                         ),

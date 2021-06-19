@@ -1,7 +1,7 @@
 part of dashboard;
 
-class _TopMusic extends GetView<DashboardController> {
-  const _TopMusic({Key? key}) : super(key: key);
+class _RecommendedAlbum extends GetView<DashboardController> {
+  const _RecommendedAlbum({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +11,7 @@ class _TopMusic extends GetView<DashboardController> {
         Row(
           children: [
             Text(
-              "Top Music",
+              "Recommended Album",
               style: Theme.of(context)
                   .textTheme
                   .headline6!
@@ -38,22 +38,39 @@ class _TopMusic extends GetView<DashboardController> {
             physics: BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
             child: Row(
-              children: controller.listTopMusic
-                  .map(
-                    (e) => CardMusic.large(
-                      data: CardMusicData(
-                          image: e.image,
-                          title: e.title,
-                          subtitle: e.singerName,
-                          duration: e.duration,
-                          isPlaying: false),
-                    ),
-                  )
+              children: controller.listRecommendedAlbum
+                  .map((e) => _cardAlbum(image: e.image, name: e.name))
                   .toList(),
             ),
           ),
         )
       ],
+    );
+  }
+
+  Widget _cardAlbum({required ImageProvider image, required String name}) {
+    return Padding(
+      padding: const EdgeInsets.all(kPaddingContent),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ShadowImage(
+            imageProvider: image,
+            size: Size(235, 160),
+          ),
+          SizedBox(height: 20),
+          Text(
+            name,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+              letterSpacing: 1,
+            ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ],
+      ),
     );
   }
 }

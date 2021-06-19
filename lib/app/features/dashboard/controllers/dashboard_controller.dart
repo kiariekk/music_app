@@ -42,6 +42,15 @@ class DashboardController extends GetxController {
     ),
   ];
 
+  final listRecommendedAlbum = [
+    DashboardAlbum(
+        image: AssetImage(ImageRasterConstant.album1), name: "Light"),
+    DashboardAlbum(
+        image: AssetImage(ImageRasterConstant.album2), name: "Different World"),
+    DashboardAlbum(
+        image: AssetImage(ImageRasterConstant.album3), name: "Different World"),
+  ];
+
   final profil = DashboardProfile(
       image: AssetImage(ImageRasterConstant.logo),
       name: "Gia Developer",
