@@ -14,6 +14,8 @@ class _BottomNavbar extends GetView<DashboardPlayMusicController> {
           topLeft: Radius.circular(50),
           topRight: Radius.circular(50),
         ),
+        elevation: 5,
+        shadowColor: Colors.black12,
         color: Colors.white,
         child: Row(
           children: [

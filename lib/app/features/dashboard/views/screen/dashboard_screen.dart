@@ -53,8 +53,7 @@ class DashboardScreen extends StatelessWidget {
               Flexible(
                 flex: 15,
                 child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: kPaddingContent),
+                  padding: const EdgeInsets.only(left: kPaddingContent),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
