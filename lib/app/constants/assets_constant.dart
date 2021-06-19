@@ -11,11 +11,12 @@ abstract class ImageRasterConstant {
   static const album1 = _path + '/album_1.png';
   static const album2 = _path + '/album_2.png';
   static const album3 = _path + '/album_3.png';
-  static const topMusic1 = _path + '/top_music_1.png';
-  static const topMusic2 = _path + '/top_music_2.png';
-  static const topMusic3 = _path + '/top_music_3.png';
-  static const topMusic4 = _path + '/top_music_4.png';
-  static const topMusic5 = _path + '/top_music_5.png';
+
+  static const atMyWorst = _path + '/at-my-worst.png';
+  static const leaveTheDoorOpen = _path + '/leave-the-door-open.png';
+  static const levitating = _path + '/levitating.png';
+  static const peaches = _path + '/peaches.png';
+  static const saveYourTears = _path + '/save-your-tears.png';
 }
 
 abstract class ImageVectorConstant {

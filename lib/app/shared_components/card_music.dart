@@ -189,7 +189,8 @@ class _Large extends StatelessWidget {
           ShadowImage(
             imageProvider: data.image,
             size: size,
-            offset: Offset(-10, 10),
+            borderRadius: BorderRadius.circular(10),
+            offset: Offset(-5, 15),
           ),
           SizedBox(height: 20),
           SizedBox(

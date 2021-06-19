@@ -43,7 +43,7 @@ class _BottomNavbar extends GetView<DashboardPlayMusicController> {
       children: [
         SizedBox(width: 20),
         ShadowImage(
-          imageProvider: AssetImage(ImageRasterConstant.topMusic1),
+          imageProvider: AssetImage(ImageRasterConstant.levitating),
           size: Size(60, 60),
           borderRadius: BorderRadius.circular(30),
           offset: Offset(0, 5),
