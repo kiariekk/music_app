@@ -45,6 +45,27 @@ class DashboardController extends GetxController {
         image: AssetImage(ImageRasterConstant.album3), name: "Relaxing"),
   ];
 
+  final listPopularMusic = [
+    DashboardMusic(
+      image: AssetImage(ImageRasterConstant.maroon5),
+      title: "Memories",
+      singerName: "Maroon 5",
+      duration: Duration(seconds: 221),
+    ),
+    DashboardMusic(
+      image: AssetImage(ImageRasterConstant.spiderman),
+      title: "Sunflower (Spider-Man: Into the Spider-Verse)",
+      singerName: "Post Malone, Swae Lee ",
+      duration: Duration(seconds: 162),
+    ),
+    DashboardMusic(
+      image: AssetImage(ImageRasterConstant.yayanJatnika),
+      title: "Lamunan",
+      singerName: "Yayan Jatnika",
+      duration: Duration(seconds: 243),
+    ),
+  ];
+
   final profil = DashboardProfile(
       image: AssetImage(ImageRasterConstant.logo),
       name: "Gia Developer",

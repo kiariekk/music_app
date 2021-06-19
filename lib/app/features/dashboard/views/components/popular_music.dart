@@ -15,18 +15,21 @@ class _PopularMusic extends GetView<DashboardController> {
               .headline6!
               .copyWith(fontWeight: FontWeight.bold),
         ),
+        SizedBox(height: kPaddingContent / 2),
         SizedBox(
           width: double.infinity,
           child: Column(
-            children: controller.listTopMusic
+            children: controller.listPopularMusic
+                .asMap()
+                .entries
                 .map(
                   (e) => CardMusic(
                     data: CardMusicData(
-                      image: e.image,
-                      title: e.title,
-                      subtitle: e.singerName,
-                      duration: e.duration,
-                      isPlaying: false,
+                      image: e.value.image,
+                      title: e.value.title,
+                      subtitle: e.value.singerName,
+                      duration: e.value.duration,
+                      isPlaying: (e.key == 0),
                     ),
                     onPressedPlayOrPause: () {},
                     onPressedLikedSong: () {},

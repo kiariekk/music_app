@@ -17,6 +17,10 @@ abstract class ImageRasterConstant {
   static const levitating = _path + '/levitating.png';
   static const peaches = _path + '/peaches.png';
   static const saveYourTears = _path + '/save-your-tears.png';
+
+  static const maroon5 = _path + "/maroon5.png";
+  static const spiderman = _path + "/spiderman.png";
+  static const yayanJatnika = _path + "/yayan_jatnika.png";
 }
 
 abstract class ImageVectorConstant {
