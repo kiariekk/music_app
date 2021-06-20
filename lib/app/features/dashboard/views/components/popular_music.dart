@@ -15,7 +15,7 @@ class _PopularMusic extends GetView<DashboardController> {
               .headline6!
               .copyWith(fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: kPaddingContent / 2),
+        SizedBox(height: kDefaultPadding / 2),
         SizedBox(
           width: double.infinity,
           child: Column(

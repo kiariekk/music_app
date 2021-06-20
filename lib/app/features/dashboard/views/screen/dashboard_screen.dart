@@ -38,58 +38,8 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(kPaddingContent),
-          child: Row(
-            children: [
-              Flexible(
-                flex: 3,
-                child: Container(
-                  child: _Sidebar(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
-              ),
-              Flexible(
-                flex: 15,
-                child: Padding(
-                  padding: const EdgeInsets.only(left: kPaddingContent),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _Header(),
-                      SizedBox(height: kPaddingContent),
-                      Expanded(
-                        child: SingleChildScrollView(
-                          physics: BouncingScrollPhysics(),
-                          scrollDirection: Axis.vertical,
-                          child: Column(
-                            children: [
-                              SizedBox(height: kPaddingContent),
-                              _TopMusic(),
-                              SizedBox(height: kPaddingContent * 2),
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Flexible(flex: 1, child: _PopularMusic()),
-                                  SizedBox(width: kPaddingContent),
-                                  Flexible(flex: 1, child: _RecommendedAlbum()),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
-      bottomNavigationBar: _BottomNavbar(),
-    );
+        body: Center(
+      child: Text("music app"),
+    ));
   }
 }

@@ -50,7 +50,7 @@ class _RecommendedAlbum extends GetView<DashboardController> {
 
   Widget _cardAlbum({required ImageProvider image, required String name}) {
     return Padding(
-      padding: const EdgeInsets.all(kPaddingContent),
+      padding: const EdgeInsets.all(kDefaultPadding),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
