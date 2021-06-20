@@ -55,6 +55,7 @@ class CardMusic extends StatelessWidget {
     return (_type == _CardMusicType.normal)
         ? _Normal(
             data: data,
+            isDense: isDense,
             onPressedPlayOrPause: onPressedPlayOrPause ?? () {},
             onPressedLikedSong: onPressedLikedSong ?? () {},
           )

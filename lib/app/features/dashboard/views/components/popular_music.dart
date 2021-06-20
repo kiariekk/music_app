@@ -24,6 +24,7 @@ class _PopularMusic extends GetView<DashboardController> {
                 .entries
                 .map(
                   (e) => CardMusic(
+                    isDense: (Responsive.isMobile(context)),
                     data: CardMusicData(
                       image: e.value.image,
                       title: e.value.title,
