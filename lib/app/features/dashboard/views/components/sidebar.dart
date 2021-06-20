@@ -11,6 +11,8 @@ class _Sidebar extends GetView<DashboardController> {
     return Material(
       borderRadius: borderRadius,
       color: Colors.white,
+      elevation: 5,
+      shadowColor: Colors.black12,
       child: Column(children: [
         SizedBox(height: 20),
         _profile(),

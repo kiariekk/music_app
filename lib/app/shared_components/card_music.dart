@@ -115,14 +115,15 @@ class _Normal extends StatelessWidget {
                   children: [
                     Text(
                       data.title,
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
                     SizedBox(height: 5),
                     Text(
                       data.subtitle,
-                      style: TextStyle(fontSize: 12, color: Colors.black45),
+                      style: TextStyle(color: Colors.black45),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     )
@@ -189,7 +190,8 @@ class _Large extends StatelessWidget {
           ShadowImage(
             imageProvider: data.image,
             size: size,
-            offset: Offset(-10, 10),
+            borderRadius: BorderRadius.circular(10),
+            offset: Offset(-5, 15),
           ),
           SizedBox(height: 20),
           SizedBox(
@@ -210,7 +212,7 @@ class _Large extends StatelessWidget {
             width: size.width,
             child: Text(
               data.subtitle,
-              style: TextStyle(fontSize: 13, color: Colors.black45),
+              style: TextStyle(color: Colors.black45),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
