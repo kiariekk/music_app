@@ -60,6 +60,7 @@ class DashboardScreen extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(kDefaultPadding),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Flexible(
             flex: 3,
