@@ -35,7 +35,10 @@ class ShadowImage extends StatelessWidget {
                   opacity: shadowOpacity,
                   child: ClipRRect(
                     borderRadius: borderRadius,
-                    child: Image(image: imageProvider),
+                    child: Image(
+                      image: imageProvider,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
                 ClipRRect(
@@ -61,6 +64,7 @@ class ShadowImage extends StatelessWidget {
             borderRadius: borderRadius,
             child: Image(
               image: imageProvider,
+              fit: BoxFit.cover,
             ),
           ),
         ),

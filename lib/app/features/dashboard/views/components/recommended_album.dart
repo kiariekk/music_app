@@ -10,12 +10,16 @@ class _RecommendedAlbum extends GetView<DashboardController> {
       children: [
         Row(
           children: [
-            Text(
-              "Recommended Album",
-              style: Theme.of(context)
-                  .textTheme
-                  .headline6!
-                  .copyWith(fontWeight: FontWeight.bold),
+            Expanded(
+              child: Text(
+                "Recommended Album",
+                style: Theme.of(context)
+                    .textTheme
+                    .headline6!
+                    .copyWith(fontWeight: FontWeight.bold),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
             Spacer(flex: 1),
             IconButton(
@@ -39,7 +43,14 @@ class _RecommendedAlbum extends GetView<DashboardController> {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: controller.listRecommendedAlbum
-                  .map((e) => _cardAlbum(image: e.image, name: e.name))
+                  .map((e) => _cardAlbum(
+                      image: e.image,
+                      name: e.name,
+                      scaleImg: (Responsive.isMobile(context))
+                          ? 0.7
+                          : (Responsive.isTablet(context))
+                              ? 0.85
+                              : 1))
                   .toList(),
             ),
           ),
@@ -48,16 +59,16 @@ class _RecommendedAlbum extends GetView<DashboardController> {
     );
   }
 
-  Widget _cardAlbum({required ImageProvider image, required String name}) {
+  Widget _cardAlbum(
+      {required ImageProvider image,
+      required String name,
+      double scaleImg = 1}) {
     return Padding(
       padding: const EdgeInsets.all(kDefaultPadding),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ShadowImage(
-            imageProvider: image,
-            size: Size(235, 160),
-          ),
+          ShadowImage(imageProvider: image, size: Size(235, 160) * scaleImg),
           SizedBox(height: 20),
           Text(
             name,

@@ -13,33 +13,40 @@ class _Sidebar extends GetView<DashboardController> {
       color: Colors.white,
       elevation: 5,
       shadowColor: Colors.black12,
-      child: Column(children: [
-        SizedBox(height: 20),
-        _profile(),
-        SizedBox(height: 10),
-        Divider(
-          thickness: .5,
-          indent: 10,
-          endIndent: 10,
-        ),
-        Obx(
-          () => _groupingButton(textHeader: "Browse", items: [
-            SidebarPage.home,
-            SidebarPage.playlist,
-            SidebarPage.artist,
-            SidebarPage.albums
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: kDefaultPadding),
+        child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          scrollDirection: Axis.vertical,
+          child: Column(children: [
+            SizedBox(height: 20),
+            _profile(),
+            SizedBox(height: 10),
+            Divider(
+              thickness: .5,
+              indent: 10,
+              endIndent: 10,
+            ),
+            Obx(
+              () => _groupingButton(textHeader: "Browse", items: [
+                SidebarPage.home,
+                SidebarPage.playlist,
+                SidebarPage.artist,
+                SidebarPage.albums
+              ]),
+            ),
+            Obx(
+              () => _groupingButton(textHeader: "Discover", items: [
+                SidebarPage.radio,
+                SidebarPage.event,
+                SidebarPage.podcast,
+                SidebarPage.forYou
+              ]),
+            ),
+            SizedBox(height: 20),
           ]),
         ),
-        Obx(
-          () => _groupingButton(textHeader: "Discover", items: [
-            SidebarPage.radio,
-            SidebarPage.event,
-            SidebarPage.podcast,
-            SidebarPage.forYou
-          ]),
-        ),
-        SizedBox(height: 20),
-      ]),
+      ),
     );
   }
 

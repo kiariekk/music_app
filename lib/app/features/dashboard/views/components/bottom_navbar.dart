@@ -8,7 +8,7 @@ class _BottomNavbar extends GetView<DashboardPlayMusicController> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 120,
+      height: (Responsive.isMobile(context)) ? 80 : 120,
       child: Material(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(50),
@@ -17,23 +17,44 @@ class _BottomNavbar extends GetView<DashboardPlayMusicController> {
         elevation: 10,
         shadowColor: Colors.black26,
         color: Colors.white,
-        child: Row(
-          children: [
-            Flexible(flex: 1, child: _label()),
-            Flexible(
-                flex: 2,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(height: 10),
-                    _button(),
-                    _slider(),
-                  ],
-                )),
-            Flexible(flex: 1, child: _actionsButton()),
-          ],
-        ),
+        child: (Responsive.isMobile(context))
+            ? _mobileNavbar()
+            : Row(
+                children: [
+                  Flexible(flex: 1, child: _label()),
+                  Flexible(
+                      flex: 2,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(height: 10),
+                          _button(),
+                          _slider(),
+                        ],
+                      )),
+                  Flexible(flex: 1, child: _actionsButton()),
+                ],
+              ),
+      ),
+    );
+  }
+
+  Widget _mobileNavbar() {
+    return InkWell(
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(50),
+        topRight: Radius.circular(50),
+      ),
+      onTap: () => showBottomSheetDetailSong(),
+      child: Row(
+        children: [
+          Flexible(flex: 1, child: _label()),
+          Flexible(
+            flex: 1,
+            child: _button(),
+          ),
+        ],
       ),
     );
   }
@@ -164,5 +185,71 @@ class _BottomNavbar extends GetView<DashboardPlayMusicController> {
         SizedBox(width: 20),
       ],
     );
+  }
+
+  void showBottomSheetDetailSong() {
+    Get.bottomSheet(
+        SizedBox(
+          height: Get.height * .95,
+          child: Column(
+            children: [
+              Spacer(flex: 3),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(width: kDefaultPadding),
+                  IconButton(
+                    icon: Icon(Icons.arrow_downward_rounded),
+                    onPressed: () {
+                      if (Get.isBottomSheetOpen ?? false) {
+                        Get.back();
+                      }
+                    },
+                    tooltip: "close",
+                  ),
+                  Flexible(child: _actionsButton()),
+                ],
+              ),
+              Spacer(flex: 2),
+              ShadowImage(
+                imageProvider: controller.musicPlay.image,
+                size: Size(Get.width * .7, Get.width * .7),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              Spacer(flex: 2),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                alignment: Alignment.topLeft,
+                child: Text(
+                  controller.musicPlay.title,
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.left,
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                alignment: Alignment.topLeft,
+                child: Text(
+                  controller.musicPlay.singerName,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.left,
+                ),
+              ),
+              Spacer(flex: 1),
+              Padding(
+                padding: const EdgeInsets.all(kDefaultPadding),
+                child: _slider(),
+              ),
+              Spacer(flex: 1),
+              _button(),
+              Spacer(flex: 3),
+            ],
+          ),
+        ),
+        isScrollControlled: true,
+        backgroundColor: Colors.white);
   }
 }

@@ -41,6 +41,11 @@ class _TopMusic extends GetView<DashboardController> {
               children: controller.listTopMusic
                   .map(
                     (e) => CardMusic.large(
+                      size: (Responsive.isMobile(context))
+                          ? Size(170, 170)
+                          : (Responsive.isTablet(context))
+                              ? Size(240, 240)
+                              : Size(320, 320),
                       data: CardMusicData(
                           image: e.image,
                           title: e.title,
