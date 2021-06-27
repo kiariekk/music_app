@@ -1,3 +1,4 @@
+![thumbnail](https://user-images.githubusercontent.com/84274595/123540950-d4682680-d76b-11eb-97ec-053ceecec2d0.png)
 # music_app
 
 A new Flutter project.
